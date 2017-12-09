@@ -7,28 +7,11 @@ public class Referee {
     }
 
     void markMovable(Field board[][],int x ,int y){
-        int myRóżnica[]=new int[2];
-        for (int i=x-2;i<=x+2;i++){
-            for(int j=y-2;j<=y+2;j++){
-                if(board[i][j].getField()){
-                    if(board[i][j].getChecker()==0){
-                        System.out.println(i+"    "+j);
-                        board[i][j].changeCanMove(true);
-
-                    }
-                    else if(board[i][j].getChecker()>0){
-                       myRóżnica[0]=(x-i)*2;
-                       myRóżnica[1]=(y-j)*2;
-                       if(board[x-myRóżnica[0]][y-myRóżnica[1]].getField()&&board[x-myRóżnica[0]][y-myRóżnica[1]].getChecker()==0){
-                           board[x-myRóżnica[0]][y-myRóżnica[1]].changeCanMove(true);
-                       }
-                    }
-
-                }
-
-            }
-
-
+        if(board[x][y].getState()!=null){
+            board[x][y].getState().markMovable(board,x,y);
+        }
+        else{
+            System.out.println("Unknown status!");
         }
     }
 
