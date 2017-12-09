@@ -4,7 +4,8 @@ import org.junit.*;
 
 public class TestBoard
 {
-	private Board firstBoard;
+	Board firstBoard;
+	Board secondBoard;
 	
 	@Before @Test
 	public void beforeTest()
