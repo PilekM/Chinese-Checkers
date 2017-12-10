@@ -4,6 +4,8 @@ public class Game {
 	private Board board;
 	private Referee referee;
 	private Map<Integer,Player> mapOfPlayers;
+	private List<Player> gameQueue;
+	private Integer[] order;
 	private boolean availableColors[];
 	private int GameNumber;
 	private GameMode gameMode;
@@ -12,6 +14,8 @@ public class Game {
   	referee = new Referee();
   	mapOfPlayers = new HashMap<Integer,Player>();
   	availableColors = new boolean[players];
+  	gameQueue = new ArrayList<Player>();
+  	order = new Integer[]{1,4,5,6,3,2};
   	this.GameNumber=GameNumber;
   	switch(players){
 		case 2:
@@ -47,10 +51,45 @@ public class Game {
 
   private int generateFirstPlayer(){
   	Random generator = new Random();
-  	return (generator.nextInt()*(mapOfPlayers.size()-1))+1;
-  }
+  	int player;
+  	while(true) {
+		player = (generator.nextInt() * (mapOfPlayers.size() - 1)) + 1;
+		if (availableColors[player]==false){
+			return player;
+		}
+	 }
+	}
+	private void setPlayersOrder(){
+  	  int  firstPlayer = generateFirstPlayer();
+  	  int counter;
+  	  for(counter=0;counter<6;counter++){
+  	  	if(firstPlayer==order[counter]){
+  	  		break;
+		  }
+	  }
 
+  	  for(int i=counter;i<availableColors.length;i++){
+  	  	if(availableColors[order[counter]]==false){
+  	  		for(Map.Entry<Integer,Player> entry: mapOfPlayers.entrySet()){
+              if(entry.getValue().Color==order[counter]){
+              	gameQueue.add(entry.getValue());
+			  }
+			}
+		}
+	  }
+	  for(int i=0;i<counter;i++){
+	   if(availableColors[order[counter]]==false){
+		for(Map.Entry<Integer,Player> entry: mapOfPlayers.entrySet()){
+			if(entry.getValue().Color==order[counter]){
+				gameQueue.add(entry.getValue());
+			}
+		}
+	   }
+  	  }
+	}
   void startGame(){
+  	setPlayersOrder();
+
 
   }
 
