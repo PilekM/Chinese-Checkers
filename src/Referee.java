@@ -15,4 +15,9 @@ public class Referee {
         }
     }
 
+    boolean checkWin(Game game){
+        //will check if someone win return true otherwise return false
+        return false;
+    }
+
 }

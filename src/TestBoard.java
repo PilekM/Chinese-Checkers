@@ -94,7 +94,7 @@ public class TestBoard
 		assertEquals(secondBoard.fields[17][24].getField(), false);
 		assertEquals(secondBoard.fields[17][24].getBase(), 0);
 		assertEquals(secondBoard.fields[18][24].getField(), true);
-		assertEquals(secondBoard.fields[18][24].getBase(), 0);
+		assertEquals(secondBoard.fields[18][24].getBase(), 5);
 		assertEquals(secondBoard.fields[15][25].getField(), false);
 		assertEquals(secondBoard.fields[15][25].getBase(), 0);
 		assertEquals(secondBoard.fields[16][25].getField(), false);
@@ -104,7 +104,7 @@ public class TestBoard
 		assertEquals(secondBoard.fields[18][25].getField(), false);
 		assertEquals(secondBoard.fields[18][25].getBase(), 0);
 		assertEquals(secondBoard.fields[15][26].getField(), true);
-		assertEquals(secondBoard.fields[15][26].getBase(), 0);
+		assertEquals(secondBoard.fields[15][26].getBase(), 6);
 		assertEquals(secondBoard.fields[16][26].getField(), false);
 		assertEquals(secondBoard.fields[16][26].getBase(), 0);
 		assertEquals(secondBoard.fields[17][26].getField(), false);

@@ -41,12 +41,20 @@ public class Game {
 
    void deletePlayer(int ID){
     		availableColors[mapOfPlayers.get(ID).Color-1] = true;
+    		for(Player player:gameQueue){
+    			if(player.Color==mapOfPlayers.get(ID).Color){
+    				gameQueue.remove(player);
+				}
+			}
     		mapOfPlayers.remove(ID);
    }
 
 
-  void letHimMove(int ID){
-  	mapOfPlayers.get(ID).canMove = true;
+  void letHimMove(int i){
+  	for (Player player : gameQueue){
+  		player.canMove=false;
+	}
+  	gameQueue.get(i).canMove = true;
   }
 
   private int generateFirstPlayer(){
@@ -58,8 +66,8 @@ public class Game {
 			return player;
 		}
 	 }
-	}
-	private void setPlayersOrder(){
+  }
+	 private void setPlayersOrder(){
   	  int  firstPlayer = generateFirstPlayer();
   	  int counter;
   	  for(counter=0;counter<6;counter++){
@@ -69,7 +77,7 @@ public class Game {
 	  }
 
   	  for(int i=counter;i<availableColors.length;i++){
-  	  	if(availableColors[order[counter]]==false){
+  	  	if(availableColors[order[counter]-1]==false){
   	  		for(Map.Entry<Integer,Player> entry: mapOfPlayers.entrySet()){
               if(entry.getValue().Color==order[counter]){
               	gameQueue.add(entry.getValue());
@@ -78,7 +86,7 @@ public class Game {
 		}
 	  }
 	  for(int i=0;i<counter;i++){
-	   if(availableColors[order[counter]]==false){
+	   if(availableColors[order[counter]-1]==false){
 		for(Map.Entry<Integer,Player> entry: mapOfPlayers.entrySet()){
 			if(entry.getValue().Color==order[counter]){
 				gameQueue.add(entry.getValue());
@@ -88,12 +96,16 @@ public class Game {
   	  }
 	}
   void startGame(){
+  	int counter = 0;
   	setPlayersOrder();
-
-
-  }
-
-  public boolean[] getAvailableColors() {
+  	while(!referee.checkWin(this)){
+  		letHimMove(counter%gameQueue.size());
+  		while(//koniectura){
+  			referee.markMovable(board,);
+		}
+	}
+}
+public boolean[] getAvailableColors() {
 		return availableColors;
   }
 
