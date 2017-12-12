@@ -101,7 +101,7 @@ public class Game {
   	while(!referee.checkWin(this)){
   		letHimMove(counter%gameQueue.size());
   		while(//koniectura){
-  			referee.markMovable(board,);
+  			referee.markMovable(board);
 		}
 	}
 }
