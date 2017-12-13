@@ -1,8 +1,12 @@
 public class FourPlayersMode implements GameMode {
-    public void addPlayer(int ID, Game game){
+    @Override
+    public void setOrder(Game game) {
+        game.setOrder(new Integer[]{4,5,3,2});
+    }
+    public void addPlayer(Game game,Player player){
         for(int i=2;i<6;i++){
             if(game.getAvailableColors()[i]){
-                game.getMapOfPlayers().put(ID,new Player(i, ID));
+                game.getMapOfPlayers().put(i,player);
                 game.getAvailableColors()[i] = false;
                 break;
             }

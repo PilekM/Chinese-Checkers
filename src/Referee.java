@@ -1,8 +1,10 @@
 public class Referee {
 
-    void validateMove(Field board[][],Field start,int newX,int newY){
+    Field fieldToMove;
+
+    void validateMove(Field board[][],int newX,int newY){
         if(board[newX][newY].getCanMove()){
-            start.move(board,newX,newY);
+            fieldToMove.move(board,newX,newY);
         }
     }
 
@@ -13,10 +15,13 @@ public class Referee {
         else{
             System.out.println("Unknown status!");
         }
+        fieldToMove = board[x][y];
     }
 
     boolean checkWin(Game game){
-        //will check if someone win return true otherwise return false
+        if(game.getMapOfPlayers().size()>2){
+            return true;
+        }
         return false;
     }
 

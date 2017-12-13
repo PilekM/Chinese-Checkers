@@ -1,3 +1,4 @@
 public interface GameMode {
-    void addPlayer(int ID, Game game);
+    void addPlayer(Game game,Player player);
+    void setOrder(Game game);
 }
