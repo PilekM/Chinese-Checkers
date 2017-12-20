@@ -14,12 +14,6 @@ public class Referee {
     }
 
     void markMovable(Field board[][],int x ,int y, Checker[] checkers){
-
-        for(int i = 0; i < board.length; i++){
-            for(int j=0; j < board[i].length; j++){
-                board[i][j].changeCanMove(false);
-            }
-        }
         for(int i = 0; i < checkers.length; i++){
                 if(checkers[i].getX()==x && checkers[i].getY()==y){
                     checkerToMove = checkers[i];

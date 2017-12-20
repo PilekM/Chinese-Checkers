@@ -17,7 +17,7 @@ public class Checker {
     void move(Field board[][], int newX, int newY, Player player) {
         x = newX;
         y = newY;
-        if(board[newX][newY].getBase()+this.color==7&&this.checkerState!=new inBaseState()){
+        if(board[newX][newY].getBase()+this.color==7){
             this.changeState(new inBaseState());
             player.setHowManyinBase(player.getHowManyinBase()+1);
         }
