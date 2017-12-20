@@ -1,29 +1,35 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class ImagePanel extends JPanel
+public class MenuPanel extends JPanel
 {	
-	private Image image;
+	//private Image image;
+	private JButton host = new JButton("Host");
+	private JButton join = new JButton("wolf.png");
 
-	public ImagePanel()
+	public MenuPanel()
 	{
-		image = new ImageIcon("wolf.png").getImage();
+		//image = new ImageIcon("gif.png").getImage();
+		//button = new JButton("hehe");
+		//this.add(new JButton("hehe"));
+		add(host);
+		add(join);
+		
 	}
 	
 	
 	
 	public void paintsthpls(Graphics g)
 	{	
-		g.drawImage(image, 20, 20, null);
-			
-		g.drawRect(40,40,40,40);
+		//g.drawImage(image, 20, 20, null);	
+		//g.drawRect(40,40,40,40);
 
 	}
 	
 		@Override
     public void paintComponent(Graphics g) 
 	{
-        super.paintComponent(g);  
+        //super.paintComponent(g);  
         paintsthpls(g);        
     }
 }
