@@ -14,11 +14,12 @@ public class Checker {
         this.checkerState = new notInBaseState();
     }
 
-    void move(Field board[][], int newX, int newY) {
+    void move(Field board[][], int newX, int newY, Player player) {
         x = newX;
         y = newY;
         if(board[newX][newY].getBase()+this.color==7){
             this.changeState(new inBaseState());
+            player.setHowManyinBase(player.getHowManyinBase()+1);
         }
     }
 

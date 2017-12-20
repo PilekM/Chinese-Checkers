@@ -20,11 +20,11 @@ public class Player implements Runnable{
     private String command;
     private String commandParts[];
     private Game gierka;
-    int Field;
     static int gameCounter;
     boolean isReady;
     static Map<Integer,Game> mapOfGames=new HashMap<>();
     private Checker[] checkerSet;
+    private int howManyinBase = 0;
 
 
     Player(int color, int ID, Socket connection){
@@ -138,6 +138,12 @@ public class Player implements Runnable{
     public Checker[] getCheckerSet(){
         return this.checkerSet;
     }
+    public int getHowManyinBase(){
+        return this.howManyinBase;
+    }
+    public void setHowManyinBase(int i){
+        this.howManyinBase = i;
+    }
 
     @Override
     public void run() {
@@ -160,7 +166,7 @@ public class Player implements Runnable{
                     break;
                 case("MOVE"):
                     if(canMove)
-                    gierka.getReferee().validateMove(gierka.getBoard().getFields(),Integer.parseInt(commandParts[1]),Integer.parseInt(commandParts[2]));
+                    gierka.getReferee().validateMove(gierka.getBoard().getFields(),Integer.parseInt(commandParts[1]),Integer.parseInt(commandParts[2]), this);
                     break;
                 case("CHECKMOVE"):
                     if(canMove)
