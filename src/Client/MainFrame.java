@@ -8,6 +8,9 @@ public class MainFrame extends JFrame
 	{
 		setSize(640,320);
 		setTitle("The best game ever made GOTY Edition");
-		add(new LoginPanel());
+		add(new MenuPanel());
+
+
+		
 	}
 }

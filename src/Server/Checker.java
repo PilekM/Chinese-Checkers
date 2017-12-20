@@ -18,8 +18,12 @@ public class Checker {
         board[this.x][this.y].changeChecker(0);
         x = newX;
         y = newY;
+<<<<<<< HEAD
         board[newX][newY].changeChecker(this.color);
         if(board[newX][newY].getBase()+this.color==7&&this.checkerState!=new inBaseState()){
+=======
+        if(board[newX][newY].getBase()+this.color==7){
+>>>>>>> 076c0ab955be5b6aab5927ba5895a5168e5120a3
             this.changeState(new inBaseState());
             player.setHowManyinBase(player.getHowManyinBase()+1);
         }
