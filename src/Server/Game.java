@@ -118,7 +118,7 @@ public class Game {
 				turnPlayer.send("MYTURN");
 
 			}
-			referee.checkForWinner(this);
+			referee.checkForWinner(this, turnPlayer);
 			counter++;
 		}
 	}
