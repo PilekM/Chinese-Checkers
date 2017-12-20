@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Player implements Runnable{
     int Color;
-    int ID;
+    //int ID;
     boolean canMove=false;
     private Socket socket;
     String name;
@@ -30,7 +30,7 @@ public class Player implements Runnable{
     Player(int color, int ID, Socket connection){
         this.isReady = false;
         this.Color = color;
-        this.ID = ID;
+        //this.ID = ID;
         this.socket = connection;
         gameCounter = 0;
         try {
@@ -50,10 +50,11 @@ public class Player implements Runnable{
         out.println(outputCommand);
     }
 
-    public void setCheckerSet(int color, int rows) {
+    public void setCheckerSet(int color, int rows,Board board) {
         int amount = 0;
         int newX;
         int newY;
+        Field[][] fields = board.getFields();
         for(int i = 1; i <= rows; i++){
             amount+=i;
         }
@@ -67,6 +68,7 @@ public class Player implements Runnable{
                 {
                     for(int j=0;j<=i;j++)
                     {
+                        fields[newX-i+2*j][newY+i*2].changeChecker(color);
                         checkerSet[counter++].setColor(color);
                         checkerSet[counter++].setX(newX-i+2*j);
                         checkerSet[counter++].setY(newY+i*2);
@@ -78,6 +80,7 @@ public class Player implements Runnable{
                 {
                     for(int j=0;j<=i;j++)
                     {
+                        fields[rows-1-i+2*j][2*(2*rows-1-i)].changeChecker(color);
                         checkerSet[counter++].setColor(color);
                         checkerSet[counter++].setX(rows-1-i+2*j);
                         checkerSet[counter++].setY(2*(2*rows-1-i));
@@ -91,6 +94,7 @@ public class Player implements Runnable{
                 {
                     for(int j=0;j<=i;j++)
                     {
+                        fields[newX-i+2*j][newY+i*2].changeChecker(color);
                         checkerSet[counter++].setColor(color);
                         checkerSet[counter++].setX(newX-i+2*j);
                         checkerSet[counter++].setY(newY+i*2);
@@ -102,6 +106,7 @@ public class Player implements Runnable{
                 {
                     for(int j=0;j<=i;j++)
                     {
+                        fields[5*rows+1-i+2*j][2*(2*rows-1-i)].changeChecker(color);
                         checkerSet[counter++].setColor(color);
                         checkerSet[counter++].setX(5*rows+1-i+2*j);
                         checkerSet[counter++].setY(2*(2*rows-1-i));
@@ -115,6 +120,7 @@ public class Player implements Runnable{
                 {
                     for(int j=0;j<=i;j++)
                     {
+                        fields[newX-i+2*j][newY+i*2].changeChecker(color);
                         checkerSet[counter++].setColor(color);
                         checkerSet[counter++].setX(newX-i+2*j);
                         checkerSet[counter++].setY(newY+i*2);
@@ -126,6 +132,7 @@ public class Player implements Runnable{
                 {
                     for(int j=0;j<=i;j++)
                     {
+                        fields[3*rows-i+2*j][2*(2*rows-1-i)].changeChecker(color);
                         checkerSet[counter++].setColor(color);
                         checkerSet[counter++].setX(3*rows-i+2*j);
                         checkerSet[counter++].setY(2*(2*rows-1-i));
@@ -151,7 +158,7 @@ public class Player implements Runnable{
             command = in.readLine();
             commandParts = command.split("~");
             switch(commandParts[0]){
-                case("STARTGAME"):
+                case("CREATEGAME"):
                     gameCounter++;
                     gierka = new Game(Integer.parseInt(commandParts[1]),Integer.parseInt(commandParts[2]),this,gameCounter);
                     mapOfGames.put(gameCounter,gierka);
@@ -165,12 +172,14 @@ public class Player implements Runnable{
                     gierka.getGameMode().addPlayer(gierka,this);
                     break;
                 case("MOVE"):
-                    if(canMove)
-                    gierka.getReferee().validateMove(gierka.getBoard().getFields(),Integer.parseInt(commandParts[1]),Integer.parseInt(commandParts[2]), this);
+                    if(canMove) {
+                        gierka.getReferee().validateMove(gierka.getBoard().getFields(), Integer.parseInt(commandParts[1]), Integer.parseInt(commandParts[2]), this);
+                        this.canMove = false;
+                    }
                     break;
                 case("CHECKMOVE"):
                     if(canMove)
-                    gierka.getReferee().markMovable(gierka.getBoard().getFields(),Integer.parseInt(commandParts[1]),Integer.parseInt(commandParts[2]), this.checkerSet);
+                        gierka.getReferee().markMovable(gierka.getBoard().getFields(), Integer.parseInt(commandParts[1]), Integer.parseInt(commandParts[2]), this.checkerSet);
                     break;
                 case("LEFTTURN"):
                     this.canMove = false;
