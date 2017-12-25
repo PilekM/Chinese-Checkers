@@ -10,7 +10,7 @@ public class FourPlayersMode implements GameMode {
             if(game.getAvailableColors()[i]){
                 game.getMapOfPlayers().put(i,player);
                 game.getAvailableColors()[i] = false;
-                player.setCheckerSet(i,game.getRows());
+                player.setCheckerSet(i,game.getRows(),game.getBoard());
                 break;
             }
         }

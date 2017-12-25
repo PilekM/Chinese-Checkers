@@ -42,4 +42,7 @@ public class LoginPanel extends JPanel {
 
         this.add(helpPanel);
     }
+    public JTextField getLoginField(){
+        return this.loginField;
+    }
 }
