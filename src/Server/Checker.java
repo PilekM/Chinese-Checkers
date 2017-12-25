@@ -15,11 +15,13 @@ public class Checker {
     }
 
     void move(Field board[][], int newX, int newY, Player player) {
-        board[this.x][this.y].changeChecker(0);
         x = newX;
         y = newY;
 <<<<<<< HEAD
+<<<<<<< HEAD
         board[newX][newY].changeChecker(this.color);
+=======
+>>>>>>> parent of b2ddc14... Ver 2.2
         if(board[newX][newY].getBase()+this.color==7&&this.checkerState!=new inBaseState()){
 =======
         if(board[newX][newY].getBase()+this.color==7){

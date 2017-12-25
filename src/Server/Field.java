@@ -18,33 +18,41 @@ public class Field {
     void changeField(boolean bul) {
         this.isField = bul;
     }
+
     void changeBase(int i) {
         this.base = i;
     }
+
     void changeChecker(int i) {
         this.checker = i;
     }
     void changeCanMove(boolean bul){
         this.canMove=bul;
     }
+
     boolean getCanMove(){
         return this.canMove;
     }
     int getBase() {
         return this.base;
     }
+
     boolean getField() {
         return this.isField;
     }
+
     int getChecker(){
         return this.checker;
     }
+
     FieldState getState(){
         return this.state;
     }
+
     void changeState(FieldState state){
         this.state=state;
     }
+
     void move(Field board[][], int newX, int newY) {
         board[newX][newY].changeChecker(this.checker);
         this.checker = 0;

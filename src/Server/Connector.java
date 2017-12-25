@@ -5,7 +5,7 @@ import java.net.Socket;
 
 public class Connector{
 
-    public static void main(String args[])throws Exception{
+    public static void main()throws Exception{
         int port = 1997;
 
 
