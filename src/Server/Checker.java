@@ -19,7 +19,10 @@ public class Checker {
         y = newY;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         board[newX][newY].changeChecker(this.color);
+=======
+>>>>>>> parent of b2ddc14... Ver 2.2
 =======
 >>>>>>> parent of b2ddc14... Ver 2.2
         if(board[newX][newY].getBase()+this.color==7&&this.checkerState!=new inBaseState()){
