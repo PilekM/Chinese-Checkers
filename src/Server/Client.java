@@ -1,4 +1,15 @@
-import javafx.*;
+package Server;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
 
 public class Client extends Application
 {
@@ -6,7 +17,7 @@ public class Client extends Application
 	public void start(Stage primaryStage)
 	{
 		//StackPanes declarations
-		StackPane loginRoot = new StackPane();		
+		StackPane loginRoot = new StackPane();
 		StackPane menuRoot = new StackPane();
 		StackPane serverlistRoot = new StackPane();	
 		StackPane lobbyRoot = new StackPane();
