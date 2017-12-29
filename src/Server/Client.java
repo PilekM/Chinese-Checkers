@@ -20,11 +20,25 @@ public class Client extends Application
 		loginRoot.getChildren().add(nameLabel);
 		loginRoot.getChildren().add(nameField);
 		loginRoot.getChildren().add(loginButton);
-		
+		//////////
 		Button hostButton = new Button();
 		Button joinButton = new Button();		
 		menuRoot.getChildren().add(hostButton);
 		menuRoot.getChildren().add(joinButton);
+		//////////
+		ListView<String> lobbyList = new ListView<>();
+		ObservableList<String> lobbies = FXCollections.observableArrayList("1/6","2/4","5/6");
+		lobbyList.setItems(lobbies);
+		serverlistRoot.getChildren().add(lobbyList);
+		//tu jakies dodawanie serweruf ;\
+		//////////
+		ListView<String> playerList = new ListView<>();
+		ObservableList<String> players = FXCollections.observableArrayList("Best player", "Senor VAC");
+		playerList.setItems(players);
+		lobbyRoot.getChildren().add(playerList);
+		//tu jakies dodawanie ludzikuf ;\
+		//////////
+		//tu jusz plansza
 		
 			
 		//Scenes declarations	
@@ -67,6 +81,7 @@ public class Client extends Application
 				primaryStage.setScene(serverlistScene);
 			}
 		});
+			
 			
 		
 		//Stage stuff
